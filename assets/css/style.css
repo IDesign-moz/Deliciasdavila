@@ -1727,3 +1727,20 @@ section {
   color: #fff;
 }
 
+/* Estilo para o botão Reservar Mesa */
+#loadMoreBtn {
+  background-color: none; /* Cor laranja, conforme a imagem */
+  color: black; /* Cor do texto */
+  border: #e86520; /* Cor laranja, conforme a imagem */
+  border-radius: 20px; /* Bordas arredondadas */
+  padding: 10px 30px; /* Espaçamento interno */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#loadMoreBtn:hover {
+  background-color: #cf5a1d; /* Cor mais escura ao passar o mouse */
+}
+
+
