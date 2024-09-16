@@ -491,6 +491,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 30px;
 }
 
+@media (max-width: 768px) {
+  #hero .btns {
+    margin-top: 50px;
+  }
+}
+
 #hero .btn-menu, #hero .btn-book {
   font-weight: 600;
   font-size: 13px;
