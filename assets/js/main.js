@@ -166,17 +166,9 @@
     });
   }
 
-  
-   window.addEventListener('load', () => {
-  let menuContainer = document.querySelector('.menu-container');
-  if (menuContainer) {
-    let menuIsotope = new Isotope(menuContainer, {
-      itemSelector: '.menu-item',
-      layoutMode: 'fitRows',
-      // Aplica o filtro das entradas ('.filter-starters') ao carregar a página
-      filter: '.filter-starters'  
-    });
-
+  /**
+   * Menu isotope and filter
+   */
     let menuFilters = document.querySelectorAll('#menu-flters li');
 
     // Marca a aba "Entradas" como ativa inicialmente
@@ -277,80 +269,3 @@
   });
 
 })()
-
-//botão carregar mais
-
-// Novos itens da galeria a serem carregados
-let novosItensGaleria = [
-  `<div class="col-lg-3 col-md-4">
-      <div class="gallery-item">
-        <a href="assets/img/gallery/28.jpg" class="gallery-lightbox" data-gall="gallery-item">
-          <img src="assets/img/gallery/28.jpg" alt="" class="img-fluid">
-        </a>
-      </div>
-    </div>`,
-  `<div class="col-lg-3 col-md-4">
-      <div class="gallery-item">
-        <a href="assets/img/gallery/29.jpg" class="gallery-lightbox" data-gall="gallery-item">
-          <img src="assets/img/gallery/29.jpg" alt="" class="img-fluid">
-        </a>
-      </div>
-    </div>`,
-  `<div class="col-lg-3 col-md-4">
-      <div class="gallery-item">
-        <a href="assets/img/gallery/17.jpg" class="gallery-lightbox" data-gall="gallery-item">
-          <img src="assets/img/gallery/17.jpg" alt="" class="img-fluid">
-        </a>
-      </div>
-    </div>`,
-  `<div class="col-lg-3 col-md-4">
-      <div class="gallery-item">
-        <a href="assets/img/gallery/18.jpg" class="gallery-lightbox" data-gall="gallery-item">
-          <img src="assets/img/gallery/18.jpg" alt="" class="img-fluid">
-        </a>
-      </div>
-    </div>`
-];
-
-// Seleciona o botão e o contêiner da galeria
-const botaoCarregarMais = document.getElementById('loadMoreBtn');
-const containeGaleria = document.getElementById('gallery-items');
-
-// Contador de itens carregados
-let contador = 0;
-
-// Função de carregar mais itens
-botaoCarregarMais.addEventListener('click', function() {
-  // Carregar até 4 itens por clique
-  let novosItens = '';
-  for (let i = 0; i < 4 && contador < novosItensGaleria.length; i++) {
-    novosItens += novosItensGaleria[contador];
-    contador++;
-  }
-  
-  // Adiciona os novos itens à galeria
-  containeGaleria.innerHTML += novosItens;
-
-  // Se todos os itens forem carregados, esconder o botão
-  if (contador >= novosItensGaleria.length) {
-    botaoCarregarMais.style.display = 'none';
-  }
-});
-
-
-
-
-// Seleciona todas as imagens da galeria
-const imagensGaleria = document.querySelectorAll('.gallery-item img');
-
-// Adiciona o efeito de fade-out quando as imagens são carregadas
-imagensGaleria.forEach(img => {
-  img.addEventListener('load', () => {
-    img.classList.add('loaded');
-  });
-
-  // Para o caso de o evento 'load' já ter sido disparado antes de escutarmos
-  if (img.complete) {
-    img.classList.add('loaded');
-  }
-});
