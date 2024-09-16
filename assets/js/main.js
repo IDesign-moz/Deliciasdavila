@@ -175,25 +175,41 @@
   });
 
   // Marca a aba "Entradas" como ativa inicialmente
-  document.querySelector('[data-filter=".filter-starters"]').classList.add('filter-active');
-
-  menuFilters.forEach(function(el) {
-    el.addEventListener('click', function(e) {
-      e.preventDefault();
-      menuFilters.forEach(function(filter) {
-        filter.classList.remove('filter-active');
+  window.addEventListener('load', () => {
+    let menuContainer = document.querySelector('.menu-container');
+    if (menuContainer) {
+      let menuIsotope = new Isotope(menuContainer, {
+        itemSelector: '.menu-item',
+        layoutMode: 'fitRows',
+        // Aplica o filtro das entradas ('.filter-starters') ao carregar a página
+        filter: '.filter-starters'  
       });
-      this.classList.add('filter-active');
-
-      // Aplica o filtro selecionado
-      menuIsotope.arrange({
-        filter: this.getAttribute('data-filter')
+  
+      let menuFilters = document.querySelectorAll('#menu-flters li');
+  
+      // Marca a aba "Entradas" como ativa inicialmente
+      document.querySelector('[data-filter=".filter-starters"]').classList.add('filter-active');
+  
+      menuFilters.forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          menuFilters.forEach(function(filter) {
+            filter.classList.remove('filter-active');
+          });
+          this.classList.add('filter-active');
+  
+          // Aplica o filtro selecionado
+          menuIsotope.arrange({
+            filter: this.getAttribute('data-filter')
+          });
+          menuIsotope.on('arrangeComplete', function() {
+            AOS.refresh();
+          });
+        });
       });
-      menuIsotope.on('arrangeComplete', function() {
-        AOS.refresh();
-      });
-    });
+    }
   });
+  
 
   /**
    * Initiate glightbox 
