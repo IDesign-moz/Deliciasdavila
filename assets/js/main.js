@@ -1,4 +1,3 @@
-
 (function() {
   "use strict";
 
@@ -128,7 +127,7 @@
   }, true)
 
   /**
-   * Scrool with ofset on links with a class name .scrollto
+   * Scroll with offset on links with a class name .scrollto
    */
   on('click', '.scrollto', function(e) {
     if (select(this.hash)) {
@@ -146,7 +145,7 @@
   }, true)
 
   /**
-   * Scroll with ofset on page load with hash links in the url
+   * Scroll with offset on page load with hash links in the url
    */
   window.addEventListener('load', () => {
     if (window.location.hash) {
@@ -169,31 +168,32 @@
   /**
    * Menu isotope and filter
    */
-    let menuFilters = document.querySelectorAll('#menu-flters li');
+  let menuFilters = document.querySelectorAll('#menu-flters li');
+  let menuIsotope = new Isotope('.menu-container', {
+    itemSelector: '.menu-item',
+    layoutMode: 'fitRows'
+  });
 
-    // Marca a aba "Entradas" como ativa inicialmente
-    document.querySelector('[data-filter=".filter-starters"]').classList.add('filter-active');
+  // Marca a aba "Entradas" como ativa inicialmente
+  document.querySelector('[data-filter=".filter-starters"]').classList.add('filter-active');
 
-    menuFilters.forEach(function(el) {
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        menuFilters.forEach(function(filter) {
-          filter.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
+  menuFilters.forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      menuFilters.forEach(function(filter) {
+        filter.classList.remove('filter-active');
+      });
+      this.classList.add('filter-active');
 
-        // Aplica o filtro selecionado
-        menuIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        menuIsotope.on('arrangeComplete', function() {
-          AOS.refresh();
-        });
+      // Aplica o filtro selecionado
+      menuIsotope.arrange({
+        filter: this.getAttribute('data-filter')
+      });
+      menuIsotope.on('arrangeComplete', function() {
+        AOS.refresh();
       });
     });
-  }
-
-
+  });
 
   /**
    * Initiate glightbox 
@@ -241,7 +241,6 @@
         slidesPerView: 1,
         spaceBetween: 20
       },
-
       1200: {
         slidesPerView: 3,
         spaceBetween: 20
@@ -267,3 +266,5 @@
       mirror: false
     })
   });
+
+})();
