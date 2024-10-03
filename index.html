@@ -31,7 +31,47 @@
   <link href="assets/css/style.css" rel="stylesheet">
 
   <style>
-      
+      /* Estilos da Section */
+.clientes-section {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.section-title span {
+  font-weight: bold;
+}
+
+.clientes-logos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.logo-item {
+  flex: 1 1 30%;
+  max-width: 180px;
+  text-align: center;
+}
+
+.logo-item img {
+  width: 100%;
+  max-width: 150px;
+  object-fit: contain;
+  filter: grayscale(100%);
+}
+
+.logo-item img:hover {
+  filter: grayscale(0);
+}
+
 
    /* Estilos do botão flutuante */
   .floating-btn {
@@ -765,6 +805,22 @@
 
       </div>
     </section><!-- End Testimonials Section -->
+
+    <section id="clientes" class="clientes-section">
+  <div class="container">
+
+     <div class="col-12 mb-5 position-relative">
+        <h2 class="section-title text-center mb-5">Alguns de <span>nossos clientes</span></h2>
+      </div>
+    <div class="clientes-logos">
+      <div class="logo-item"><img src="images/water.png" alt="Water aid logo"></div>
+      <div class="logo-item"><img src="images/idesign.png" alt="idesign logo"></div>
+      <div class="logo-item"><img src="images/water.png" alt="water aid logo"></div>
+      <div class="logo-item"><img src="images/idesign.png" alt="idesign logo"></div>
+      <div class="logo-item"><img src="images/water.png" alt="idesign logo"></div>
+    </div>
+  </div>
+</section>
 
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
